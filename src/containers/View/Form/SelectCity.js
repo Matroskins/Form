@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';

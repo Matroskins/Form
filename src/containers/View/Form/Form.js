@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import { compose, withHandlers, withState, withStateHandlers } from 'recompose';
+import { compose, withState, withStateHandlers } from 'recompose';
 import styled from 'styled-components';
 import SelectCity from './SelectCity';
 import Comment from './Comment';
@@ -92,12 +92,7 @@ const enhance = compose(
         isCommentValid: false,
       }),
     }
-  ),
-  withHandlers({
-    saveComment: (props) => (city, comment) => {
-      props.saveComment(city,comment);
-    }
-  })
+  )
 );
 
 export default enhance(Form); 
