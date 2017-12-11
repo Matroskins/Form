@@ -8,7 +8,7 @@ const Container = styled.div`
   flex-direction:column;
   align-items:center;
   justify-content: space-between; 
-  width:50%;
+  width:100%;
 `;
 
 const CommentList = ({ commentList }) => (
@@ -18,6 +18,7 @@ const CommentList = ({ commentList }) => (
         <CommentRow
           city={comment.city}
           comment={comment.comment}
+          temp={comment.temp}
           key={comment.city + id}
         />);
     }

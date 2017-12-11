@@ -26,7 +26,7 @@ const SaveComment = ({ disabledButton, onClick } : SaveCommentProp) => (
 const enhance = compose(
   withHandlers({
     onClick: (props) => () => {
-      props.onClick(props.cityName, props.comment);
+      props.onClick(props.cityName, props.temp, props.comment);
     }
   })
 );

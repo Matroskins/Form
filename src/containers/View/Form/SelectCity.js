@@ -37,7 +37,7 @@ const enhance = compose(
     onChange: (props) => (event, index, value) => {
       const findCityObject = props.citys.find(city => city.value === value);
       props.setSelectValue(value);
-      props.setSelectCity(findCityObject.name);
+      props.setSelectCity(findCityObject.id);
       if (value > 0) {
         props.selectCity();
       }

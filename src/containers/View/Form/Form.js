@@ -19,11 +19,11 @@ type FormProp = {
   citys: Array<{name: string, value: number, }>,
   comment: string,
   isCitySelected: boolean,
-  selectCityName: string,
+  selectCityId: number,
   isCommentValid: boolean,
   saveComment: () => void,
   setComment: () => void,
-  setSelectCityName: () => void,
+  setSelectCityId: () => void,
   commentCorrect: () => void,
   commentIncorrect: () => void,
   selectCity: () => void,
@@ -36,19 +36,20 @@ const Form = ({
   comment,
   isCitySelected,
   setComment,
-  selectCityName,
-  setSelectCityName,
+  selectCityId,
+  setSelectCityId,
   isCommentValid,
   commentCorrect,
   commentIncorrect,
   selectCity,
   unselectCity } : FormProp) => {
-    const disabledButton = !(isCitySelected && isCommentValid); 
+    const disabledButton = !(isCitySelected && isCommentValid);
+    const selectElement =citys.find((element)=>(element.id === selectCityId)); 
   return (
     <Container>
       <SelectCity
         isCitySelected={isCitySelected}
-        setSelectCity={setSelectCityName}
+        setSelectCity={setSelectCityId}
         selectCity={selectCity}
         unselectCity={unselectCity}
         citys={citys} 
@@ -62,7 +63,8 @@ const Form = ({
       <SaveComment
         disabledButton = {disabledButton}
         comment={comment}
-        cityName={selectCityName}
+        cityName={(typeof selectElement === "undefined") ? '' : selectElement.name }
+        temp={(typeof selectElement === "undefined") ? '' : selectElement.temp}
         onClick={saveComment} 
       />
     </Container>
@@ -70,7 +72,7 @@ const Form = ({
 }
 const enhance = compose(
   withState('comment', 'setComment', ''),
-  withState('selectCityName', 'setSelectCityName', ''),
+  withState('selectCityId', 'setSelectCityId', ''),
   withStateHandlers(
     () => ({ isCitySelected: false }),
     {
